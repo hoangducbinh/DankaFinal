@@ -1,0 +1,160 @@
+﻿@using DankaFinal.Models;
+@using PagedList.Mvc;
+@model PagedList.PagedList<Khoahocedm>
+@{
+    ViewBag.Title = "Khoahoctheotheloai";
+
+}
+
+
+
+<div class="header_slide">
+    <div class="header_bottom_left">
+        <div class="categories">
+            <ul>
+                <h3 style="background: blueviolet; margin-top: 0px; ">Khóa học theo thể loại nhạc</h3>
+                <li>@Html.Action("SubjectTheloai", "Home")</li>
+
+            </ul>
+        </div>
+    </div>
+    <div class="header_bottom_right">
+        <div class="silder_der" style=" border-radius: 30px; height: 545px; border: 2px solid darkorchid; background-color: darkorchid">
+            <div class="slider">
+                <div id="slider" style=" border-radius: 30px; height: 540px; border: 2px solid darkorchid;">
+                    <div id="mover">
+                        <div id="slide-1" class="slide">
+                            <div class="slider-img" style=" width: 890px; margin-left: 98px;">
+                                <a href="preview.html"><img src="~/Content/imageDankamusic/quang cao 7.jpg" style="width: 100% ;border-radius: 50px;" alt="learn more" /></a>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+
+
+                    </div>
+                </div>
+                <!-- <div class="clear"></div>-->
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="clear"></div>
+</div>
+
+
+
+<div class="content">
+
+    <div class="content_toptop">
+
+
+
+        <div class="section group">
+
+
+
+            @foreach (var item in Model)
+            {
+                <div class="grid_1_of_4 images_1_of_4">
+
+                    <a href="@Url.Action("Chitietkhoahoc","Home",new {id= item.maKhoahoc })"><img src="~/Content/imageDankamusic/@item.hinhMinhhoa" style="max-width:70%" alt="" /></a>
+                    <h2>@item.tenKhoahoc </h2>
+                    <div class="price-details">
+                        <div class="price-number">
+                            <p><span class="rupees">@Html.FormatValue(item.donGia, "{0:#,##0}") VNĐ</span></p>
+
+                        </div>
+                        <div class="add-cart">
+                            <h4>
+                                <a style="background: darkmagenta;" href="@Url.Action("ThemGioHang","GioHang",new {ms = item.maKhoahoc,url = Request.Url.ToString()})" class="btn btn-primary" role="button">
+                                    <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true">
+
+                                    </span>
+                                    Add to Cart
+                                </a>
+                            </h4>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+
+                </div>
+            }
+
+
+
+            <div class="col-12" style="text-align:center;margin-left:650px">
+                <nav>
+                    <div class="MenuTrang">
+                        @Html.PagedListPager(Model, page => Url.Action("Khoahoctheotheloai", new { page = page }))
+                    </div>
+                    <style>
+
+                        .MenuTrang {
+                            display: block;
+                            text-align: center;
+                        }
+
+                        .MenuTrang a {
+                            text-align:center;
+                            color: black;
+                            float: left;
+                            padding: 8px 16px;
+                            text-decoration: none;
+                            border: 1px solid blue;
+                            border-radius: 5px;
+                           
+                        }
+
+                            .MenuTrang a:hover {
+                                background-color: blueviolet;
+                                color: lawngreen;
+                                border-radius: 5px;
+                            }
+
+                        .MenuTrang button:active {
+                            background-color: blueviolet;
+                            color: blueviolet;
+                        }
+                    </style>
+                </nav>
+            </div>
+
+
+
+        </div>
+
+       
+
+
+    </div>
+
+
+</div>
+
+
+
+
+<style>
+
+    .content_toptop {
+        padding: 15px 20px;
+        border: 2px solid darkorchid;
+        border-radius: 15px;
+    }
+
+
+    .content_tent {
+        padding: 15px 20px;
+        border: 2px solid darkorchid;
+        border-radius: 9px;
+    }
+
+    .categories {
+        border: 2px solid darkorchid;
+        border-radius: 9px;
+    }
+</style>
+

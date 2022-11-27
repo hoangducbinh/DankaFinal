@@ -1,0 +1,113 @@
+﻿@model DankaFinal.Models.Khoahocedm
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Khoahocedm</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.tenKhoahoc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tenKhoahoc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.donGia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.donGia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.moTa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.moTa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.hinhMinhhoa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.hinhMinhhoa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tengiangvien)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tengiangvien)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ngayCapnhat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ngayCapnhat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.soLuongban)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.soLuongban)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.soLanxem)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.soLanxem)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.linkdemo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.linkdemo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.lotrinh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.lotrinh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.theloai.tenTheloai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.theloai.tenTheloai)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

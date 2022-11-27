@@ -1,0 +1,134 @@
+﻿@using DankaFinal.Models
+@using PagedList.Mvc;
+@model PagedList.PagedList<DankaFinal.Models.Khoahocedm>
+
+
+
+
+@{
+    ViewBag.Title = "index";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+
+
+
+
+<div class="content">
+    <div class="container-fluid">
+        <div class="row" style="margin-left: 100px;">
+            <div class="col-lg-24">
+                <div class="card">
+                    <div class="card-body">
+                        <h2>Quản lý khoá học EDM</h2>
+                        <p style="text-align:right;margin-right:40px">
+                            <a href="@Url.Action("Create","Khoahocedm")" class="btn btn-primary" style="width: 100px; background-color: darkblue; border-color: cornsilk; " role="button">Thêm mới</a>
+
+                        </p>
+
+                        <table class="table">
+                            <tr>
+                                <th style="text-align:center; width:180px">
+                                    Tên khóa học
+                                </th>
+                                <th style="text-align:center; width:140px">
+                                    Đơn giá
+                                </th>
+
+                                <th style="text-align:center">
+                                    Hình Minh họa
+                                </th>
+                                <th style="text-align:center ; width:200px">
+                                    Tên giảng viên
+                                </th>
+                                <th style="text-align:center">
+                                    Ngày phát hành
+                                </th>
+                                <th style="text-align:center;">
+                                    Số lượng bán
+                                </th>
+
+                                <th style="text-align:center">
+                                    Tên thể loại
+                                </th>
+                                <th style="text-align:center;width:280px;">
+                                    Chức năng
+                                </th>
+                                <th></th>
+                            </tr>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td style="text-align:center;">
+                                        @Html.DisplayFor(modelItem => item.tenKhoahoc)
+                                    </td>
+                                    <td style="text-align:center;">
+                                        @Html.FormatValue(item.donGia, "{0:#,##0}") VNĐ
+                                    </td>
+                                    <td style="text-align:center;">
+                                        <img style="width:85px" src="~/Content/imageDankamusic/@Html.DisplayFor(modelItem => item.hinhMinhhoa)" />
+                                    </td>
+                                    <td style="text-align:center;">
+                                        @Html.DisplayFor(modelItem => item.tengiangvien)
+                                    </td>
+                                    <td style="text-align:center;">
+                                        @Html.DisplayFor(modelItem => item.ngayCapnhat)
+                                    </td>
+                                    <td style="text-align:center;">
+                                        @Html.DisplayFor(modelItem => item.soLuongban)
+                                    </td>
+                                    <td style="text-align:center;">
+                                        @Html.DisplayFor(modelItem => item.theloai.tenTheloai)
+                                    </td>
+                                    <td style="text-align:center;">
+
+                                        <a href="@Url.Action("Edit", new { id = item.maKhoahoc })" class="btn btn-primary" style="width: 70px; background-color: darkmagenta; border-color: cornsilk; " role="button">Sửa</a>
+
+
+                                        <a href="@Url.Action("Details", new { id = item.maKhoahoc })" class="btn btn-primary" style="width: 80px; background-color: darkviolet; border-color: cornsilk;" role="button">Chi tiết</a>
+
+
+
+                                        <a href="@Url.Action("Delete", new { id = item.maKhoahoc })" class="btn btn-primary" style="width: 70px; background-color: darkblue; border-color: cornsilk; " role="button">Xóa</a>
+
+                                    </td>
+                                </tr>
+                            }
+
+                        </table>
+                        <div class="col-12" style="text-align:center">
+                            <nav>
+
+                                <div class="MenuTrang">
+                                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
+                                </div>
+                                <style>
+                                    .MenuTrang {
+                                        display: inline-block;
+                                        text-align: center;
+                                    }
+                                        .MenuTrang a {
+                                            color: white;
+                                            float: left;
+                                            padding: 8px 16px;
+                                            text-decoration: none;
+                                            border: 1px solid blue;
+                                            border-radius: 5px;
+                                        }
+                                            .MenuTrang a:hover {
+                                                background-color: blueviolet;
+                                                color: lawngreen;
+                                                border-radius: 5px;
+                                            }
+                                </style>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.row -->
+    </div><!-- /.container-fluid -->
+</div>
+
+
+

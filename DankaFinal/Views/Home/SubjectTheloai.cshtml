@@ -1,0 +1,13 @@
+﻿@model IEnumerable<DankaFinal.Models.theloai>
+
+
+
+
+    @foreach (var item in Model)
+    {
+        <li style="background-color:white">
+            <a href="@Url.Action("Khoahoctheotheloai","Home",new {id = item.maTl })" class="list-group-item">@item.tenTheloai</a>
+        </li>
+    }
+
+

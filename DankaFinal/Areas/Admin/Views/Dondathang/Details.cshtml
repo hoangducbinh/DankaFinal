@@ -1,0 +1,59 @@
+﻿@model DankaFinal.Models.dondathang
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>dondathang</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ngayDh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ngayDh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.triGia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.triGia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.htThanhtoan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.htThanhtoan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.htGiaohang)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.htGiaohang)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.khachhang.hoTenkh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.khachhang.hoTenkh)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.soDh }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

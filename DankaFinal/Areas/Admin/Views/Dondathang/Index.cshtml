@@ -1,0 +1,87 @@
+﻿@model IEnumerable<DankaFinal.Models.dondathang>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+
+
+
+
+
+<div class="content">
+    <div class="container-fluid">
+        <div class="row" style="margin-left: 40px;">
+            <div class="col-lg-24">
+                <div class="card">
+                    <div class="card-body">
+
+
+
+
+
+                        <h2>Đơn hàng</h2>
+                        <table class="table">
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.ngayDh)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.triGia)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.htThanhtoan)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.htGiaohang)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.khachhang.hoTenkh)
+                                </th>
+                                <th></th>
+                            </tr>
+
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.ngayDh)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.triGia)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.htThanhtoan)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.htGiaohang)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.khachhang.hoTenkh)
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("Edit", "Edit", new { id = item.soDh }) |
+                                        @Html.ActionLink("Details", "Details", new { id = item.soDh }) |
+                                        @Html.ActionLink("Delete", "Delete", new { id = item.soDh })
+                                    </td>
+                                </tr>
+                            }
+
+                        </table>
+
+
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+        <!-- /.row -->
+    </div><!-- /.container-fluid -->
+</div>
+
+
+
+
+

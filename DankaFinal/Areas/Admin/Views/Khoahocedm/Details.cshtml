@@ -1,0 +1,136 @@
+﻿@model DankaFinal.Models.Khoahocedm
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+
+
+
+
+
+
+
+<div class="content">
+    <div class="container-fluid">
+        <div class="row" style="margin-left: 400px;">
+            <div class="col-lg-24">
+                <div class="card">
+                    <div class="card-body">
+
+
+
+                        <h2 style="text-align:center">Chi tiết @Model.tenKhoahoc</h2>
+
+                        <div style=" margin-left: 30px;">    
+                            <hr />
+                            <dl class="dl-horizontal">
+
+                                
+
+                                <dd style="text-align:center">
+                                    <img style="width:150px" src="~/Content/imageDankamusic/@Html.DisplayFor(modelItem => Model.hinhMinhhoa)" />
+                                </dd>
+
+
+                                <dt>
+                                    Tên khóa học
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.tenKhoahoc)
+                                </dd>
+
+                                <dt>
+                                    Giá bán
+                                </dt>
+
+                                <dd>
+                                    @Html.FormatValue(@Model.donGia, "{0:#,##0}") VNĐ
+                                </dd>
+
+                                <dt>
+                                    Mô tả
+                                </dt>
+
+                                <dd style="width:600px;text-align:justify">
+                                    @Html.Raw(@Model.moTa.ToString().Replace("\n", "</p><p>&nbsp&nbsp&nbsp&nbsp&nbsp"))
+                                </dd>
+
+
+
+
+                                <dt>
+                                    Người hướng dẫn
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.tengiangvien)
+                                </dd>
+
+                                <dt>
+                                    Ngày phát hành
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.ngayCapnhat)
+                                </dd>
+
+
+
+
+
+
+
+
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.linkdemo)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.linkdemo)
+                                </dd>
+
+                                <dt>
+                                    Lộ trình
+                                </dt>
+
+                                <dd style="width:600px;text-align:justify">
+                                    @Html.Raw(@Model.lotrinh.ToString().Replace("\n", "</p><p>&nbsp&nbsp&nbsp&nbsp&nbsp"))
+                                </dd>
+
+                                <dt>
+                                    Tên thể loại nhạc
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.theloai.tenTheloai)
+                                </dd>
+
+                            </dl>
+                        </div>
+                        <p style="text-align:center">
+                            <a href="@Url.Action("Edit", new { id = Model.maKhoahoc })" class="btn btn-primary" style="width: 70px; background-color: darkmagenta; border-color: cornsilk; " role="button">Sửa</a>
+                            <a href="@Url.Action("Index", "Khoahocedm")" class="btn btn-primary" style="width: 100px; background-color: darkblue; border-color: cornsilk; " role="button">Thoát</a>
+                        </p>
+
+
+
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+        <!-- /.row -->
+    </div><!-- /.container-fluid -->
+</div>
+
+
+
+
+
+
+

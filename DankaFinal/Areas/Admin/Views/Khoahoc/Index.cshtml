@@ -1,0 +1,148 @@
+﻿@using DankaFinal.Models
+@using PagedList.Mvc;
+@model PagedList.PagedList<DankaFinal.Models.Khoahocedm>
+
+
+
+
+
+@{
+    ViewBag.Title = "index";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+
+
+
+
+<h2>Quản lý khoá học EDM</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th style="text-align:center; width:180px">
+            Tên khóa học
+        </th>
+        <th style="text-align:center">
+            Đơn giá
+        </th>
+        
+        <th style="text-align:center">
+            Hình Minh họa
+        </th>
+        <th style="text-align:center">
+            Tên giảng viên
+        </th>
+        <th style="text-align:center">
+            Ngày phát hành
+        </th>
+        <th>
+            Số lượng bán
+        </th>
+        <th>
+
+        </th>
+        <th>
+            LinkDemo
+        </th>
+        <th>
+
+        </th>
+        <th style="text-align:center">
+            Tên thể loại
+        </th>
+
+
+        <th style="text-align:center;width:250px;">
+            Chức năng
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.tenKhoahoc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.donGia)
+            </td>
+            
+            <td>
+                <img style="width:60px" src="~/Content/imageDankamusic/@Html.DisplayFor(modelItem => item.hinhMinhhoa)" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tengiangvien)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ngayCapnhat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.soLuongban)
+            </td>
+            <td>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.linkdemo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.lotrinh)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.theloai.tenTheloai)
+            </td>
+            <td>
+
+                <a href="@Url.Action("Edit", new { id = item.maKhoahoc })" class="btn btn-warning" style="width: 70px; background-color: darkmagenta; border-color: cornsilk; " role="button">Sửa</a>
+
+
+                <a href="@Url.Action("Details", new { id = item.maKhoahoc })" class="btn btn-primary" style="width: 80px; background-color: darkviolet; border-color: cornsilk;" role="button">Chi tiết</a>
+
+
+
+                <a href="@Url.Action("Delete", new { id = item.maKhoahoc })" class="btn btn-danger" style="width: 70px; background-color: darkblue; border-color: cornsilk; " role="button">Xóa</a>
+
+            </td>
+
+
+
+
+
+
+
+
+
+        </tr>
+    }
+
+</table>
+
+
+
+
+
+
+
+
+<script type="text/javascript" src="~/Scripts/jquery-1.11.3.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+
+
+
+
+
+
+
+@*Tạo iên kết phần trang*@ Trang
+@(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount
+<div class="MenuTrang">
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
+</div>
+<style>
+    .MenuTrang {
+        display: inline;
+        text-align: center;
+    }
+</style>

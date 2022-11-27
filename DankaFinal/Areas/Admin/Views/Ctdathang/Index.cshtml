@@ -1,0 +1,90 @@
+﻿@model IEnumerable<DankaFinal.Models.ctdathang>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+
+
+
+
+
+<div class="content">
+    <div class="container-fluid">
+        <div class="row" style="margin-left: 40px;">
+            <div class="col-lg-24">
+                <div class="card">
+                    <div class="card-body">
+
+
+
+
+                        <h2>Index</h2>
+
+                        <p>
+                            @Html.ActionLink("Create New", "Create")
+                        </p>
+                        <table class="table">
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.soLuong)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.donGia)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.thanhTien)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.dondathang.soDh)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Khoahocedm.tenKhoahoc)
+                                </th>
+                                <th></th>
+                            </tr>
+
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.soLuong)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.donGia)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.thanhTien)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.dondathang.soDh)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Khoahocedm.tenKhoahoc)
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                                        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                                        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                                    </td>
+                                </tr>
+                            }
+
+                        </table>
+
+
+
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+        <!-- /.row -->
+    </div><!-- /.container-fluid -->
+</div>
+
+
+
+

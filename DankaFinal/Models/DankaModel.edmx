@@ -1,0 +1,460 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="dankaschoolModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ADMIN">
+          <Key>
+            <PropertyRef Name="maAdmin" />
+          </Key>
+          <Property Name="maAdmin" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="hoTenAdmin" Type="nvarchar" MaxLength="50" />
+          <Property Name="diaChiAdmin" Type="nvarchar" MaxLength="50" />
+          <Property Name="dienThoaiAdmin" Type="varchar" MaxLength="10" />
+          <Property Name="tenDnAdmin" Type="varchar" MaxLength="15" />
+          <Property Name="matKhauAdmin" Type="varchar" MaxLength="15" />
+          <Property Name="ngaySinhAdmin" Type="smalldatetime" />
+          <Property Name="gioiTinhAdmin" Type="bit" />
+          <Property Name="emailAdmin" Type="varchar" MaxLength="50" />
+          <Property Name="quyenAdmin" Type="int" />
+        </EntityType>
+        <EntityType Name="ctdathang">
+          <Key>
+            <PropertyRef Name="soDh" />
+            <PropertyRef Name="maKhoahoc" />
+          </Key>
+          <Property Name="soDh" Type="int" Nullable="false" />
+          <Property Name="maKhoahoc" Type="int" Nullable="false" />
+          <Property Name="soLuong" Type="int" />
+          <Property Name="donGia" Type="decimal" Precision="9" Scale="2" />
+          <Property Name="thanhTien" Type="decimal" Precision="20" Scale="2" StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="dondathang">
+          <Key>
+            <PropertyRef Name="soDh" />
+          </Key>
+          <Property Name="soDh" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="maKh" Type="int" />
+          <Property Name="ngayDh" Type="smalldatetime" />
+          <Property Name="triGia" Type="money" />
+          <Property Name="htThanhtoan" Type="bit" />
+          <Property Name="htGiaohang" Type="bit" />
+        </EntityType>
+        <EntityType Name="khachhang">
+          <Key>
+            <PropertyRef Name="maKh" />
+          </Key>
+          <Property Name="maKh" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="hoTenkh" Type="nvarchar" MaxLength="50" />
+          <Property Name="diaChikh" Type="nvarchar" MaxLength="50" />
+          <Property Name="dienThoaikh" Type="varchar" MaxLength="10" />
+          <Property Name="tenDn" Type="varchar" MaxLength="15" />
+          <Property Name="matKhau" Type="varchar" MaxLength="15" />
+          <Property Name="ngaySinh" Type="smalldatetime" />
+          <Property Name="gioiTinh" Type="bit" />
+          <Property Name="email" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Khoahocedm">
+          <Key>
+            <PropertyRef Name="maKhoahoc" />
+          </Key>
+          <Property Name="maKhoahoc" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tenKhoahoc" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="donGia" Type="money" />
+          <Property Name="moTa" Type="ntext" />
+          <Property Name="hinhMinhhoa" Type="varchar" MaxLength="50" />
+          <Property Name="maTl" Type="int" />
+          <Property Name="tengiangvien" Type="nvarchar" MaxLength="50" />
+          <Property Name="ngayCapnhat" Type="smalldatetime" />
+          <Property Name="soLuongban" Type="int" />
+          <Property Name="soLanxem" Type="int" />
+          <Property Name="linkdemo" Type="varchar" MaxLength="200" />
+          <Property Name="lotrinh" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="quangcao">
+          <Key>
+            <PropertyRef Name="stt" />
+          </Key>
+          <Property Name="stt" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tencongty" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="hinhminhhoa" Type="varchar" MaxLength="20" />
+          <Property Name="href" Type="varchar" MaxLength="100" />
+          <Property Name="ngaybatdau" Type="smalldatetime" />
+          <Property Name="ngayhethan" Type="smalldatetime" />
+        </EntityType>
+        <EntityType Name="theloai">
+          <Key>
+            <PropertyRef Name="maTl" />
+          </Key>
+          <Property Name="maTl" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tenTheloai" Type="nvarchar" MaxLength="30" />
+        </EntityType>
+        <Association Name="fk_ctdathang_dondathang">
+          <End Role="dondathang" Type="Self.dondathang" Multiplicity="1" />
+          <End Role="ctdathang" Type="Self.ctdathang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dondathang">
+              <PropertyRef Name="soDh" />
+            </Principal>
+            <Dependent Role="ctdathang">
+              <PropertyRef Name="soDh" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ctdathang_khoahocedm">
+          <End Role="Khoahocedm" Type="Self.Khoahocedm" Multiplicity="1" />
+          <End Role="ctdathang" Type="Self.ctdathang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Khoahocedm">
+              <PropertyRef Name="maKhoahoc" />
+            </Principal>
+            <Dependent Role="ctdathang">
+              <PropertyRef Name="maKhoahoc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_dondathang_khachhang">
+          <End Role="khachhang" Type="Self.khachhang" Multiplicity="0..1" />
+          <End Role="dondathang" Type="Self.dondathang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="khachhang">
+              <PropertyRef Name="maKh" />
+            </Principal>
+            <Dependent Role="dondathang">
+              <PropertyRef Name="maKh" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_khoahocedm_theloai">
+          <End Role="theloai" Type="Self.theloai" Multiplicity="0..1" />
+          <End Role="Khoahocedm" Type="Self.Khoahocedm" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="theloai">
+              <PropertyRef Name="maTl" />
+            </Principal>
+            <Dependent Role="Khoahocedm">
+              <PropertyRef Name="maTl" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="dankaschoolModelStoreContainer">
+          <EntitySet Name="ADMIN" EntityType="Self.ADMIN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ctdathang" EntityType="Self.ctdathang" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dondathang" EntityType="Self.dondathang" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="khachhang" EntityType="Self.khachhang" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Khoahocedm" EntityType="Self.Khoahocedm" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="quangcao" EntityType="Self.quangcao" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="theloai" EntityType="Self.theloai" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="fk_ctdathang_dondathang" Association="Self.fk_ctdathang_dondathang">
+            <End Role="dondathang" EntitySet="dondathang" />
+            <End Role="ctdathang" EntitySet="ctdathang" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ctdathang_khoahocedm" Association="Self.fk_ctdathang_khoahocedm">
+            <End Role="Khoahocedm" EntitySet="Khoahocedm" />
+            <End Role="ctdathang" EntitySet="ctdathang" />
+          </AssociationSet>
+          <AssociationSet Name="fk_dondathang_khachhang" Association="Self.fk_dondathang_khachhang">
+            <End Role="khachhang" EntitySet="khachhang" />
+            <End Role="dondathang" EntitySet="dondathang" />
+          </AssociationSet>
+          <AssociationSet Name="fk_khoahocedm_theloai" Association="Self.fk_khoahocedm_theloai">
+            <End Role="theloai" EntitySet="theloai" />
+            <End Role="Khoahocedm" EntitySet="Khoahocedm" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="dankaschoolModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ADMIN">
+          <Key>
+            <PropertyRef Name="maAdmin" />
+          </Key>
+          <Property Name="maAdmin" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="hoTenAdmin" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="diaChiAdmin" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="dienThoaiAdmin" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="tenDnAdmin" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="matKhauAdmin" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="ngaySinhAdmin" Type="DateTime" Precision="0" />
+          <Property Name="gioiTinhAdmin" Type="Boolean" />
+          <Property Name="emailAdmin" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="quyenAdmin" Type="Int32" />
+        </EntityType>
+        <EntityType Name="ctdathang">
+          <Key>
+            <PropertyRef Name="soDh" />
+            <PropertyRef Name="maKhoahoc" />
+          </Key>
+          <Property Name="soDh" Type="Int32" Nullable="false" />
+          <Property Name="maKhoahoc" Type="Int32" Nullable="false" />
+          <Property Name="soLuong" Type="Int32" />
+          <Property Name="donGia" Type="Decimal" Precision="9" Scale="2" />
+          <Property Name="thanhTien" Type="Decimal" Precision="20" Scale="2" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="dondathang" Relationship="Self.fk_ctdathang_dondathang" FromRole="ctdathang" ToRole="dondathang" />
+          <NavigationProperty Name="Khoahocedm" Relationship="Self.fk_ctdathang_khoahocedm" FromRole="ctdathang" ToRole="Khoahocedm" />
+        </EntityType>
+        <EntityType Name="dondathang">
+          <Key>
+            <PropertyRef Name="soDh" />
+          </Key>
+          <Property Name="soDh" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="maKh" Type="Int32" />
+          <Property Name="ngayDh" Type="DateTime" Precision="0" />
+          <Property Name="triGia" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="htThanhtoan" Type="Boolean" />
+          <Property Name="htGiaohang" Type="Boolean" />
+          <NavigationProperty Name="ctdathangs" Relationship="Self.fk_ctdathang_dondathang" FromRole="dondathang" ToRole="ctdathang" />
+          <NavigationProperty Name="khachhang" Relationship="Self.fk_dondathang_khachhang" FromRole="dondathang" ToRole="khachhang" />
+        </EntityType>
+        <EntityType Name="khachhang">
+          <Key>
+            <PropertyRef Name="maKh" />
+          </Key>
+          <Property Name="maKh" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="hoTenkh" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="diaChikh" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="dienThoaikh" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="tenDn" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="matKhau" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="ngaySinh" Type="DateTime" Precision="0" />
+          <Property Name="gioiTinh" Type="Boolean" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="dondathangs" Relationship="Self.fk_dondathang_khachhang" FromRole="khachhang" ToRole="dondathang" />
+        </EntityType>
+        <EntityType Name="Khoahocedm">
+          <Key>
+            <PropertyRef Name="maKhoahoc" />
+          </Key>
+          <Property Name="maKhoahoc" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tenKhoahoc" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="donGia" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="moTa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="hinhMinhhoa" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="maTl" Type="Int32" />
+          <Property Name="tengiangvien" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ngayCapnhat" Type="DateTime" Precision="0" />
+          <Property Name="soLuongban" Type="Int32" />
+          <Property Name="soLanxem" Type="Int32" />
+          <Property Name="linkdemo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="lotrinh" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ctdathangs" Relationship="Self.fk_ctdathang_khoahocedm" FromRole="Khoahocedm" ToRole="ctdathang" />
+          <NavigationProperty Name="theloai" Relationship="Self.fk_khoahocedm_theloai" FromRole="Khoahocedm" ToRole="theloai" />
+        </EntityType>
+        <EntityType Name="quangcao">
+          <Key>
+            <PropertyRef Name="stt" />
+          </Key>
+          <Property Name="stt" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tencongty" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="hinhminhhoa" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="href" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ngaybatdau" Type="DateTime" Precision="0" />
+          <Property Name="ngayhethan" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="theloai">
+          <Key>
+            <PropertyRef Name="maTl" />
+          </Key>
+          <Property Name="maTl" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tenTheloai" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Khoahocedms" Relationship="Self.fk_khoahocedm_theloai" FromRole="theloai" ToRole="Khoahocedm" />
+        </EntityType>
+        <Association Name="fk_ctdathang_dondathang">
+          <End Role="dondathang" Type="Self.dondathang" Multiplicity="1" />
+          <End Role="ctdathang" Type="Self.ctdathang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dondathang">
+              <PropertyRef Name="soDh" />
+            </Principal>
+            <Dependent Role="ctdathang">
+              <PropertyRef Name="soDh" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ctdathang_khoahocedm">
+          <End Role="Khoahocedm" Type="Self.Khoahocedm" Multiplicity="1" />
+          <End Role="ctdathang" Type="Self.ctdathang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Khoahocedm">
+              <PropertyRef Name="maKhoahoc" />
+            </Principal>
+            <Dependent Role="ctdathang">
+              <PropertyRef Name="maKhoahoc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_dondathang_khachhang">
+          <End Role="khachhang" Type="Self.khachhang" Multiplicity="0..1" />
+          <End Role="dondathang" Type="Self.dondathang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="khachhang">
+              <PropertyRef Name="maKh" />
+            </Principal>
+            <Dependent Role="dondathang">
+              <PropertyRef Name="maKh" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_khoahocedm_theloai">
+          <End Role="theloai" Type="Self.theloai" Multiplicity="0..1" />
+          <End Role="Khoahocedm" Type="Self.Khoahocedm" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="theloai">
+              <PropertyRef Name="maTl" />
+            </Principal>
+            <Dependent Role="Khoahocedm">
+              <PropertyRef Name="maTl" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DanKaEDMEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ADMINs" EntityType="Self.ADMIN" />
+          <EntitySet Name="ctdathangs" EntityType="Self.ctdathang" />
+          <EntitySet Name="dondathangs" EntityType="Self.dondathang" />
+          <EntitySet Name="khachhangs" EntityType="Self.khachhang" />
+          <EntitySet Name="Khoahocedms" EntityType="Self.Khoahocedm" />
+          <EntitySet Name="quangcaos" EntityType="Self.quangcao" />
+          <EntitySet Name="theloais" EntityType="Self.theloai" />
+          <AssociationSet Name="fk_ctdathang_dondathang" Association="Self.fk_ctdathang_dondathang">
+            <End Role="dondathang" EntitySet="dondathangs" />
+            <End Role="ctdathang" EntitySet="ctdathangs" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ctdathang_khoahocedm" Association="Self.fk_ctdathang_khoahocedm">
+            <End Role="Khoahocedm" EntitySet="Khoahocedms" />
+            <End Role="ctdathang" EntitySet="ctdathangs" />
+          </AssociationSet>
+          <AssociationSet Name="fk_dondathang_khachhang" Association="Self.fk_dondathang_khachhang">
+            <End Role="khachhang" EntitySet="khachhangs" />
+            <End Role="dondathang" EntitySet="dondathangs" />
+          </AssociationSet>
+          <AssociationSet Name="fk_khoahocedm_theloai" Association="Self.fk_khoahocedm_theloai">
+            <End Role="theloai" EntitySet="theloais" />
+            <End Role="Khoahocedm" EntitySet="Khoahocedms" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="dankaschoolModelStoreContainer" CdmEntityContainer="DanKaEDMEntities">
+          <EntitySetMapping Name="ADMINs">
+            <EntityTypeMapping TypeName="dankaschoolModel.ADMIN">
+              <MappingFragment StoreEntitySet="ADMIN">
+                <ScalarProperty Name="maAdmin" ColumnName="maAdmin" />
+                <ScalarProperty Name="hoTenAdmin" ColumnName="hoTenAdmin" />
+                <ScalarProperty Name="diaChiAdmin" ColumnName="diaChiAdmin" />
+                <ScalarProperty Name="dienThoaiAdmin" ColumnName="dienThoaiAdmin" />
+                <ScalarProperty Name="tenDnAdmin" ColumnName="tenDnAdmin" />
+                <ScalarProperty Name="matKhauAdmin" ColumnName="matKhauAdmin" />
+                <ScalarProperty Name="ngaySinhAdmin" ColumnName="ngaySinhAdmin" />
+                <ScalarProperty Name="gioiTinhAdmin" ColumnName="gioiTinhAdmin" />
+                <ScalarProperty Name="emailAdmin" ColumnName="emailAdmin" />
+                <ScalarProperty Name="quyenAdmin" ColumnName="quyenAdmin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ctdathangs">
+            <EntityTypeMapping TypeName="dankaschoolModel.ctdathang">
+              <MappingFragment StoreEntitySet="ctdathang">
+                <ScalarProperty Name="soDh" ColumnName="soDh" />
+                <ScalarProperty Name="maKhoahoc" ColumnName="maKhoahoc" />
+                <ScalarProperty Name="soLuong" ColumnName="soLuong" />
+                <ScalarProperty Name="donGia" ColumnName="donGia" />
+                <ScalarProperty Name="thanhTien" ColumnName="thanhTien" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dondathangs">
+            <EntityTypeMapping TypeName="dankaschoolModel.dondathang">
+              <MappingFragment StoreEntitySet="dondathang">
+                <ScalarProperty Name="soDh" ColumnName="soDh" />
+                <ScalarProperty Name="maKh" ColumnName="maKh" />
+                <ScalarProperty Name="ngayDh" ColumnName="ngayDh" />
+                <ScalarProperty Name="triGia" ColumnName="triGia" />
+                <ScalarProperty Name="htThanhtoan" ColumnName="htThanhtoan" />
+                <ScalarProperty Name="htGiaohang" ColumnName="htGiaohang" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="khachhangs">
+            <EntityTypeMapping TypeName="dankaschoolModel.khachhang">
+              <MappingFragment StoreEntitySet="khachhang">
+                <ScalarProperty Name="maKh" ColumnName="maKh" />
+                <ScalarProperty Name="hoTenkh" ColumnName="hoTenkh" />
+                <ScalarProperty Name="diaChikh" ColumnName="diaChikh" />
+                <ScalarProperty Name="dienThoaikh" ColumnName="dienThoaikh" />
+                <ScalarProperty Name="tenDn" ColumnName="tenDn" />
+                <ScalarProperty Name="matKhau" ColumnName="matKhau" />
+                <ScalarProperty Name="ngaySinh" ColumnName="ngaySinh" />
+                <ScalarProperty Name="gioiTinh" ColumnName="gioiTinh" />
+                <ScalarProperty Name="email" ColumnName="email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Khoahocedms">
+            <EntityTypeMapping TypeName="dankaschoolModel.Khoahocedm">
+              <MappingFragment StoreEntitySet="Khoahocedm">
+                <ScalarProperty Name="maKhoahoc" ColumnName="maKhoahoc" />
+                <ScalarProperty Name="tenKhoahoc" ColumnName="tenKhoahoc" />
+                <ScalarProperty Name="donGia" ColumnName="donGia" />
+                <ScalarProperty Name="moTa" ColumnName="moTa" />
+                <ScalarProperty Name="hinhMinhhoa" ColumnName="hinhMinhhoa" />
+                <ScalarProperty Name="maTl" ColumnName="maTl" />
+                <ScalarProperty Name="tengiangvien" ColumnName="tengiangvien" />
+                <ScalarProperty Name="ngayCapnhat" ColumnName="ngayCapnhat" />
+                <ScalarProperty Name="soLuongban" ColumnName="soLuongban" />
+                <ScalarProperty Name="soLanxem" ColumnName="soLanxem" />
+                <ScalarProperty Name="linkdemo" ColumnName="linkdemo" />
+                <ScalarProperty Name="lotrinh" ColumnName="lotrinh" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="quangcaos">
+            <EntityTypeMapping TypeName="dankaschoolModel.quangcao">
+              <MappingFragment StoreEntitySet="quangcao">
+                <ScalarProperty Name="stt" ColumnName="stt" />
+                <ScalarProperty Name="tencongty" ColumnName="tencongty" />
+                <ScalarProperty Name="hinhminhhoa" ColumnName="hinhminhhoa" />
+                <ScalarProperty Name="href" ColumnName="href" />
+                <ScalarProperty Name="ngaybatdau" ColumnName="ngaybatdau" />
+                <ScalarProperty Name="ngayhethan" ColumnName="ngayhethan" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="theloais">
+            <EntityTypeMapping TypeName="dankaschoolModel.theloai">
+              <MappingFragment StoreEntitySet="theloai">
+                <ScalarProperty Name="maTl" ColumnName="maTl" />
+                <ScalarProperty Name="tenTheloai" ColumnName="tenTheloai" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

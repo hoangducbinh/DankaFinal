@@ -1,0 +1,77 @@
+﻿@model DankaFinal.Models.Khoahocedm
+
+@{
+    ViewBag.Title = "Them";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+<h2>THÊM SÁCH</h2>
+@*Thêm thuộc tính cho form để upload ảnh*@
+@using (Html.BeginForm("Create", "Khoahoc", FormMethod.Post, new
+{
+    @enctype = "multipart/form-data"
+}))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+
+            <label class="control-label col-md-2">Tên khóa học:</label>
+            <div class="col-md-10">
+                <input type="text" size="70" name="stenKhoahoc" value="@ViewBag.tenKhoahoc"
+                       required />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2">Mo ta:</label>
+            <div class="col-md-10">
+                <textarea name="smoTa">@ViewBag.moTa</textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2">Hinh minh hoa:</label>
+            <div class="col-md-10">
+                <input type="file" name="fFileUpload" />
+                @*Thông báo lỗi yêu cầu phải chọn ảnh bìa*@
+                @ViewBag.Thongbao
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2">Ngày cập nhật:</label>
+            <div class="col-md-10">
+                <input type="date" name="dngayCapnhat" required />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2">Số lượng:</label>
+            <div class="col-md-10">
+                <input type="number" min="1" required name="isoLuong"
+                       value="@ViewBag.soLuong" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2">Giá bán:</label>
+            <div class="col-md-10">
+                <input type="number" min="1" required name="mgiaBan"
+                       value="@ViewBag.giaBan" />
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.maTl, "maTl", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("maTl", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.maTl, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Thêm mới" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+<div>
+    @Html.ActionLink("Quay lai", "Index")
+</div>

@@ -1,0 +1,78 @@
+﻿
+
+@model DankaFinal.Models.khachhang
+
+@{
+    ViewBag.Title = "Dangnhap";
+}
+
+
+
+
+
+
+<div class="content_tent" style="width: 320px;margin-left:590px" ">
+
+
+    <h4 style="color:red; text-align:center;">@ViewBag.Thongbao</h4>
+    <h4 class="text-center" style="color: blue; margin-left: 130px; margin-bottom: 10px; margin-top: 10px;">ĐĂNG NHẬP</h4>
+    <table align="center" style="margin-left:20px">
+        @using (Html.BeginForm())
+        {
+            @Html.ValidationSummary(true)
+            <tr>
+                <td height="40">Tên đăng nhập: </td>
+                <td>@Html.TextBox("tenDn")@ViewData["er1"]</td>
+            </tr>
+
+            <tr>
+                <td height="40">Mật khẩu: </td>
+                <td>@Html.Password("matKhau")@ViewData["er1"]</td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td><input type="submit"value="Đăng nhập" /></td>
+            </tr>
+        }
+    </table>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+
+    .content_toptop {
+        padding: 15px 20px;
+        border: 2px solid darkorchid;
+        border-radius: 15px;
+    }
+
+
+    .content_tent {
+        margin-top: 10px;
+        padding: 15px 20px;
+        border: 2px solid darkorchid;
+        border-radius: 9px;
+    }
+
+    .categories {
+        border: 2px solid darkorchid;
+        border-radius: 9px;
+        height: 580px
+    }
+</style>

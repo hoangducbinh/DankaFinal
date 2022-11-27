@@ -1,0 +1,119 @@
+﻿@using DankaFinal.Models;
+@model List<GioHang>
+@{
+    ViewBag.Title = "GioHang";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+
+<div class="content_tent">
+
+
+
+    <h2 style="text-align:center;"> THÔNG TIN GIỎ HÀNG </h2>
+    <table border="1">
+        <tr style="font-size:18px;">
+
+            <td style="width:250px">Tên Khóa học</td>
+
+            <td style="width:100px"></td>
+            <td style="width:200px;">Đơn Giá</td>
+
+
+
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr style="width:300px">
+
+
+                <td>@item.tenKhoahoc</td>
+                <td><img src="~/Content/imageDankamusic/@item.Anhbia" style="width:70px;"></td>
+                @using (@Html.BeginForm("CapNhatGioHang", "GioHang", new { imakhoahoc = @item.maKhoahoc }))
+
+                {
+                    <td>@string.Format("{0:#,##0,0}", @item.donGia):VND</td>
+
+                    <td style="width:100px">
+                        <a href="@Url.Action("Chitietkhoahoc", "Home" , new { id= @item.maKhoahoc})" class="btn btn-sm btn-danger">
+                            Chi tiết
+                        </a>
+                    </td>
+
+                    <td>
+
+                        <a href="@Url.Action("XoaSPKhoiGioHang","GioHang", new { @imakhoahoc = item.maKhoahoc })"
+                           style="width: 70px; border-color: cornsilk;">Xóa</a>
+                    </td>
+
+
+
+
+                }
+            </tr>
+
+        }
+        <tr>
+            
+            <td style="height: 80px;"></td>
+            <td colspan="4" style="text-align: right; color: red; font-weight: bold; padding-right: 5px; width: 1000px">
+                Tổng số lượng: @string.Format("{0:#,##0,0}", @ViewBag.TongSoLuong)
+            </td>
+
+            <td colspan="5" style="text-align:center; color:red; font-weight:bold;">
+                Tổng tiền:  @string.Format(" {0:#,##0,0}", @ViewBag.TongTien) VNĐ
+            </td>
+
+        </tr>
+        <tr style="font-weight: bold; color: blue; text-align: right;">
+
+            <td colspan="9">
+                @Html.ActionLink("Xóa hết", "XoaGioHang")
+            </td>
+        </tr>
+        <tr style="font-weight: bold; color: blue; text-align: center;">
+            <td colspan="9">
+                @Html.ActionLink("ĐẶT HÀNG", "DatHang")
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <a href="@Url.Action("Index", "Home")" class="btn btn-sm btn-info">
+                    <i class="fas fa-plus"></i>Lựa thêm hàng
+                </a>
+            </td>
+        </tr>
+    </table>
+    </div>
+
+
+
+
+
+
+
+
+
+<style>
+
+    .content_toptop {
+        padding: 15px 20px;
+        border: 2px solid darkorchid;
+        border-radius: 15px;
+    }
+
+
+    .content_tent {
+        padding: 15px 20px;
+        border: 2px solid darkorchid;
+        border-radius: 9px;
+    }
+
+    .categories {
+        border: 2px solid darkorchid;
+        border-radius: 9px;
+    }
+</style>

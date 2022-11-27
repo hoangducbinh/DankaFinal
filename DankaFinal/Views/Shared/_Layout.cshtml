@@ -1,0 +1,203 @@
+﻿<!--A Design by W3layouts
+Author: W3layout
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Học làm nhạc EDM</title>
+    <link rel="icon" type="image/png" href="~/Areas/Admin/ContentAdmin/images/icons/headphones.ico" />
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!--
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
+       -->
+
+
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script type="text/javascript" src="~/Content/js/move-top.js"></script>
+    <script type="text/javascript" src="~/Content/js/easing.js"></script>
+    <script type="text/javascript" src="~/Content/js/startstop-slider.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery-1.11.3.min.js"></script>
+
+
+    <link href="~/Content/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/Content/css/slider.css" rel="stylesheet" type="text/css" media="all" />
+
+    <link href="~/Areas/Admin/fontawesome-free/css/all.min.css" rel="stylesheet" />
+    <script src="~/tinymce/js/tinymce/tinymce.min.js"></script>
+    <script src='https://cdn.tiny.cloud/1/b7u9fapklim0u3641vrlnz595075vj9x8joaavm9h7wo171l/tinymce/6/tinymce.min.js' referrerpolicy='origin'></script>
+    <script>
+        tinymce.init({ selector: 'textarea' });
+    </script>
+
+
+</head>
+<body>
+
+
+    <style>
+        .wrap_wrap {
+            padding: 15px 20px;
+            border: 2px solid darkorchid;
+            border-radius: 15px;
+            width: 80%;
+            margin: 0 auto;
+        }
+    </style>
+
+    <style>
+        .wrap_wrap_wrap {
+            padding: 15px 20px;
+            border: 2px solid darkorchid;
+            border-radius: 15px;
+            width: 3000px;
+            margin: 0 auto;
+        }
+    </style>
+
+
+
+
+   
+    <div class="wrap_wrap">
+        <div class="header">
+            <div class="headertop_desc" style="border-bottom: 2px solid darkorchid;">
+                <div class="call">
+                    <p><span>DankaMusic</span> Trung tâm đào tạo nhạc sĩ số <span class="number">1</span> <span>Việt Nam</span></p>
+                </div>
+                <div class="account_desc">
+                    <ul>
+                        <li>@Html.Action("LoginLogout", "Home")</li>
+
+                    </ul>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="header_top" style=" padding: 15px 0; height: 70px;">
+                <div class="logo">
+                 <img style="width: 380px; border-radius: 17px; " src="~/Content/imageDankamusic/dankascholllll.png" />
+                </div>
+
+
+            </div>
+            <div style="background: blueviolet; border-radius: 9px;">
+                <div class="menu">
+                    <ul>
+                        <li><a href="@Url.Action("Index","Home",null)" class="active">Trang chủ</a></li>
+                        <li></li>
+                        <li><a href="@Url.Action("Gioithieu","Home")">Giới thiệu</a></li>
+
+                        <li>@Html.Action("Giohang_partial", "GioHang")</li>
+                        <li><a href="#">News</a></li>
+                        <li><a href="#">Học trực tiếp</a></li>
+
+                    </ul>
+                </div>
+                <div class="search_box">
+                    <form>
+                        <input type="text" value="Tìm kiếm" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}"><input type="submit" value="">
+                    </form>
+                </div>
+                <div class="clear"></div>
+            </div>
+
+
+
+        </div>
+
+
+
+
+
+
+        @RenderBody()
+
+    </div>
+
+            <div class="footer" style=" border-top: 1px solid blueviolet;">
+                <div class="wrap">
+                    <div class="section group">
+                        <div class="col_1_of_4 span_1_of_4">
+                            <h4>Information</h4>
+                            <ul>
+                                <li><a href="about.html">About Us</a></li>
+                                <li><a href="contact.html">Customer Service</a></li>
+                                <li><a href="#">Advanced Search</a></li>
+                                <li><a href="delivery.html">Orders and Returns</a></li>
+                                <li><a href="contact.html">Contact Us</a></li>
+                            </ul>
+                        </div>
+                        <div class="col_1_of_4 span_1_of_4">
+                            <h4>Why buy from us</h4>
+                            <ul>
+                                <li><a href="about.html">About Us</a></li>
+                                <li><a href="contact.html">Customer Service</a></li>
+                                <li><a href="#">Privacy Policy</a></li>
+                                <li><a href="contact.html">Site Map</a></li>
+                                <li><a href="#">Search Terms</a></li>
+                            </ul>
+                        </div>
+                        <div class="col_1_of_4 span_1_of_4">
+                            <h4>My account</h4>
+                            <ul>
+                                <li><a href="contact.html">Sign In</a></li>
+                                <li><a href="index.html">View Cart</a></li>
+                                <li><a href="#">My Wishlist</a></li>
+                                <li><a href="#">Track My Order</a></li>
+                                <li><a href="contact.html">Help</a></li>
+                            </ul>
+                        </div>
+                        <div class="col_1_of_4 span_1_of_4">
+                            <h4>Contact</h4>
+                            <ul>
+                                <li><span>+91-123-456789</span></li>
+                                <li><span>+00-123-000000</span></li>
+                            </ul>
+                            <div class="social-icons">
+                                <h4>Follow Us</h4>
+                                <ul>
+                                    <li><a href="#" target="_blank"><img src="~/Content/images/facebook.png" alt="" /></a></li>
+                                    <li><a href="#" target="_blank"><img src="~/Content/images/twitter.png" alt="" /></a></li>
+                                    <li><a href="#" target="_blank"><img src="~/Content/images/skype.png" alt="" /> </a></li>
+                                    <li><a href="#" target="_blank"> <img src="~/Content/images/dribbble.png" alt="" /></a></li>
+                                    <li><a href="#" target="_blank"> <img src="~/Content/images/linkedin.png" alt="" /></a></li>
+                                    
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="copy_right">
+                    <p>&copy; 2022 DankaMusic| Design by Hoàng Đức Bình </p>
+                </div>
+            </div>
+
+
+
+        
+
+    
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $().UItoTop({ easingType: 'easeOutQuart' });
+        });
+    </script>
+    <a href="#" id="toTop"><span id="toTopHover"> </span></a>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+
+
+
+</body>
+</html>
+

@@ -1,0 +1,83 @@
+﻿@model DankaFinal.Models.khachhang
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>khachhang</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.hoTenkh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.hoTenkh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.diaChikh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.diaChikh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dienThoaikh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dienThoaikh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tenDn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tenDn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.matKhau)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.matKhau)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ngaySinh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ngaySinh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.gioiTinh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.gioiTinh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.email)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.maKh }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

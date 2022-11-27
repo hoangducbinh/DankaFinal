@@ -1,0 +1,132 @@
+﻿@model IEnumerable<DankaFinal.Models.khachhang>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+
+
+
+
+
+<div class="content">
+    <div class="container-fluid">
+        <div class="row" style=" margin-left: 40px;">
+            <div class="col-lg-24">
+                <div class="card">
+                    <div class="card-body">
+
+
+
+
+
+
+
+                        <h2 style="text-align:center">Quản lý thông tin khách hàng</h2>
+
+                        
+                        <table class="table">
+                            <tr>
+                                <th style="width:180px ; text-align:center">
+                                    Họ tên khách hàng
+                                </th>
+                                <th style="width:180px ; text-align:center">
+                                    Địa chỉ khách hàng
+                                </th>
+                                <th style="width:100px ; text-align:center">
+                                    Điện thoại
+                                </th>
+                                <th style="width:180px ; text-align:center">
+                                    Tài khoản đăng nhập
+                                </th>
+                                <th style="width:180px ; text-align:center">
+                                    Mật khẩu
+                                </th>
+                                <th style="width:180px ; text-align:center">
+                                    Ngày sinh
+                                </th>
+                                <th style=" text-align:center">
+                                    Giới tính
+                                </th>
+                                <th style="width:180px ; text-align:center">
+                                    Email
+                                </th>
+                                <th style="width:180px ; text-align:center">
+                                    Chức năng
+                                </th>
+                            </tr>
+
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.hoTenkh)
+                                    </td>
+                                    <td>
+                                        @Html.Raw(item.diaChikh.ToString().Replace("\n", "</p><p>&nbsp&nbsp&nbsp&nbsp&nbsp"))
+
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.dienThoaikh)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.tenDn)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.matKhau)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.ngaySinh)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.gioiTinh)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.email)
+                                    </td>
+                                    <td style="text-align:center;">
+
+                                        <a href="@Url.Action("Edit", new { id = item.maKh })" class="btn btn-primary" style="width: 70px; background-color: darkmagenta; border-color: cornsilk; " role="button">Sửa</a>
+
+
+
+
+
+                                        <a href="@Url.Action("Delete", new { id = item.maKh })" class="btn btn-primary" style="width: 70px; background-color: darkblue; border-color: cornsilk; " role="button">Xóa</a>
+
+                                    </td>
+                                </tr>
+                            }
+
+                        </table>
+
+
+
+
+
+
+
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+        <!-- /.row -->
+    </div><!-- /.container-fluid -->
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

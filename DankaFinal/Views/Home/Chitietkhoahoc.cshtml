@@ -1,0 +1,237 @@
+﻿@model DankaFinal.Models.Khoahocedm
+@{
+    ViewBag.Title = "Chitietkhoahoc";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="header_slide">
+    <div class="header_bottom_left">
+        <div class="categories">
+            <ul>
+                <h3 style="background: blueviolet; margin-top: 0px; ">Khóa học theo thể loại nhạc</h3>
+                <li>@Html.Action("SubjectTheloai", "Home")</li>
+
+            </ul>
+        </div>
+    </div>
+
+    <div class="header_bottom_right">
+
+        <div class="product-details">
+            <div class="grid images_3_of_2">
+                <div id="container">
+                    <div id="products_example">
+
+                        <div id="products">
+                            <div>
+                                <a href="#" target="_blank"><img src="~/Content/imageDankamusic/@Model.hinhMinhhoa" style="max-width: 52%;" alt=" " /></a>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="desc span_3_of_2">
+                <h2>@Model.tenKhoahoc</h2>
+                <p>Tên người hướng dẫn :@Model.tengiangvien</p>
+                <div class="price">
+                    <p>Giá khóa học:<span>@Html.FormatValue(@Model.donGia, "{0:#,##0}") VNĐ</span></p>
+
+                </div>
+                <div class="available">
+                    <p>Ngày phát hành khóa học:</p>
+                    <ul>
+                        @Html.FormatValue(@Model.ngayCapnhat, "{0:dd/MM/yyyy}")
+                    </ul>
+
+
+
+                </div>
+                <div class="share-desc">
+                    <div class="share">
+                        <p>Theo dõi chúng tôi ở đây:</p>
+                        <ul>
+                            <li><a href="https://www.facebook.com/" target="_blank"><img src="~/Content/imageDankamusic/facebook.png" style="width:40px" alt="" /></a></li>
+                            <li><a href="https://www.youtube.com/MixtapeSeoul" target="_blank"><img src="~/Content/imageDankamusic/youtube.jpg" style="width:70px" alt="" /></a></li>
+                        </ul>
+                    </div>
+
+                    <div class="button"><span><a style="background: darkmagenta;" href="@Url.Action("ThemGioHang","GioHang", new {ms = Model.maKhoahoc,url = Request.Url.ToString()})">Add to Cart</a></span></div>
+                    <div class="clear"></div>
+                </div>
+                <div class="wish-list">
+                    <ul>
+
+                        <li class="wish;main-button"><a href="https://www.facebook.com/groups/1805408902845027" target="_blank">Cộng đồng FL Studio</a></li>
+                        <li class="compare"><a href="https://www.youtube.com/channel/UCEUCPBc_yLcko0gjQVjzncg" target="_blank">Học làm EDM Miễn phí</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+
+
+    </div>
+
+    <div class="clear"></div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="section group">
+    <div class="cont-desc span_1_of_2">
+
+        <div class="product_desc">
+            <div id="horizontalTab">
+                <h4>GIỚI THIỆU KHÓA HỌC</h4>
+                <div class="resp-tabs-container">
+                    <div class="product-desc">
+                        @Model.moTa
+                    </div>
+
+                    <hr />
+
+                    <div class="review">
+
+                        <div class="your-review">
+                            <h3>How Do You Rate This Product?</h3>
+                            <p>Write Your Own Review?</p>
+                            <form>
+                                <div>
+                                    <span><label>Nickname<span class="red">*</span></label></span>
+                                    <span><input type="text" value=""></span>
+                                </div>
+                                <div>
+                                    <span><label>Summary of Your Review<span class="red">*</span></label></span>
+                                    <span><input type="text" value=""></span>
+                                </div>
+                                <div>
+                                    <span><label>Review<span class="red">*</span></label></span>
+                                    <span><textarea> </textarea></span>
+                                </div>
+                                <div>
+                                    <span><input type="submit" value="SUBMIT REVIEW"></span>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('#horizontalTab').easyResponsiveTabs({
+                    type: 'default', //Types: default, vertical, accordion
+                    width: 'auto', //auto or any width like 600px
+                    fit: true   // 100% fit in a container
+                });
+            });</script>
+        <div class="content_bottom">
+            <div class="heading">
+                <h3>Khóa học bán chạy</h3>
+            </div>
+           
+            <div class="clear"></div>
+        </div>
+        <div class="section group">
+          
+                @Html.Action("SubjectKhoahoc", "Home")
+            
+        </div>
+
+    </div>
+
+
+
+
+
+
+    
+
+        <div class="categories">
+            <div class="rightsidebar span_3_of_1">
+                <h3 style="background: blue; margin-top: 0px;">
+                    LỘ TRÌNH KHÓA HỌC
+                </h3>
+                <ul class="side-w3ls">
+                    <li><a href="#">Giới thiệu dòng nhạc chuyên sâu</a></li>
+                    <li><a href="#">Hướng dẫn cài đặt phần mềm</a></li>
+                    <li><a href="#">Hướng dẫn soạn Drum</a></li>
+                    <li><a href="#">Hướng dẫn mở rộng lên ý tưởng</a></li>
+                    <li><a href="#">Hướng dẫn soạn nhạc cụ đệm</a></li>
+                    <li><a href="#">Hướng dẫn tìm vòng hòa thanh</a></li>
+                    <li><a href="#">Hướng dẫn soạn Bass</a></li>
+                    <li><a href="#">Hướng dẫn bố trí hiệu ứng</a></li>
+                    <li><a href="#">Hướng dẫn đệm hòa âm với nhạc cụ</a></li>
+                    <li><a href="#">Hướng dẫn đồng bộ Vocal với beat</a> </li>
+                    <li><a href="#">Hướng dẫn Mixing cơ bản</a></li>
+                    <li><a href="#">Hướng dẫn Mixmaster cơ bản</a></li>
+                </ul>
+
+            </div>
+        </div>
+    
+
+</div>
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+
+    .content_toptop {
+        padding: 15px 20px;
+        border: 2px solid darkorchid;
+        border-radius: 15px;
+    }
+
+
+    .content_tent {
+        padding: 15px 20px;
+        border: 2px solid darkorchid;
+        border-radius: 9px;
+    }
+
+    .categories {
+        border: 2px solid darkorchid;
+        border-radius: 9px;
+    }
+</style>

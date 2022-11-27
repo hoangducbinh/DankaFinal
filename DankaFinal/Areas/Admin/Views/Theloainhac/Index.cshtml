@@ -1,0 +1,117 @@
+﻿@using DankaFinal.Models
+@using PagedList.Mvc;
+@model PagedList.PagedList<DankaFinal.Models.theloai>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+
+
+
+
+
+
+
+
+
+<div class="content">
+    <div class="container-fluid">
+        <div class="row" style="margin-left: 340px;">
+            <div class="col-lg-24">
+                <div class="card" style="width: 600px;">
+                    <div class="card-body">
+
+
+
+
+
+                        <h2>Quản lý thể loại nhạc</h2>
+
+                        <p>
+                            <a  href="@Url.Action("Create","Theloainhac")" class="btn btn-primary" style="width: 100px;  background-color: darkblue; border-color: cornsilk; " role="button">Thêm mới</a>
+                            <a href="@Url.Action("Index", "Khoahocedm")" class="btn btn-primary" style="width: 100px;background-color: darkblue; border-color: cornsilk; " role="button">Thoát</a>
+
+                        </p>
+                        <table class="table">
+                            <tr>
+                                <th>
+                                    Tên thể loại
+                                </th>
+                                <th></th>
+                            </tr>
+
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.tenTheloai)
+                                    </td>
+                                    <td style="text-align:center;">
+
+                                        <a href="@Url.Action("Edit", new { id = item.maTl })" class="btn btn-primary" style="width: 70px; background-color: darkmagenta; border-color: cornsilk; " role="button">Sửa</a>
+
+                                    </td>
+                                </tr>
+                            }
+
+                        </table>
+
+
+
+
+                        <div class="col-12" style="text-align:center">
+                            <nav>
+
+                                <div class="MenuTrang">
+                                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
+                                </div>
+                                <style>
+                                    .MenuTrang {
+                                        display: inline-block;
+                                        text-align: center;
+                                    }
+
+                                        .MenuTrang a {
+                                            color: white;
+                                            float: left;
+                                            padding: 8px 16px;
+                                            text-decoration: none;
+                                            border: 1px solid blue;
+                                            border-radius: 5px;
+                                        }
+
+                                            .MenuTrang a:hover {
+                                                background-color: blueviolet;
+                                                color: lawngreen;
+                                                border-radius: 5px;
+                                            }
+                                </style>
+                            </nav>
+                        </div>
+
+
+
+
+
+
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+        <!-- /.row -->
+    </div><!-- /.container-fluid -->
+</div>
+
+
+
+
+
+
+
+
+
+

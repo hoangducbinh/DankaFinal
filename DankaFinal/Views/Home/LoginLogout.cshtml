@@ -1,0 +1,19 @@
+﻿
+<link href="~/Areas/Admin/fontawesome-free/css/all.min.css" rel="stylesheet" />
+@using DankaFinal.Models
+@{ khachhang kh = (khachhang)Session["tenDn"]; }
+@if (Session["tenDn"] == null)
+{
+
+    <li><a href="~/User/DangNhap?id=1"><span class="glyphicon glyphicon-log-in"></span> Đăng Nhập</a></li>
+    <li><a href="~/User/DangKy"><span class="glyphicon glyphicon-user"></span> Đăng ký</a></li>
+
+}
+else
+{
+    <li><a href="#"><span class="glyphicon glyphicon-user"></span> Xin chào:@kh.hoTenkh</a></li>
+    <li><a href="~/Home/DangXuat"><span class="glyphicon glyphicon-log-out"></span> Đăng Xuất</a></li>
+}
+
+
+

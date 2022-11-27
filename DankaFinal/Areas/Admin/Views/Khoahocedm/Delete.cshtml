@@ -1,0 +1,71 @@
+﻿@model DankaFinal.Models.Khoahocedm
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+
+
+
+
+
+
+
+<div class="content">
+    <div class="container-fluid">
+        <div class="row" style="margin-left: 550px; margin-top: 130px;">
+            <div class="col-lg-24">
+                <div class="card">
+                    <div class="card-body" style=" height: 240px; width: 500px;">
+
+
+
+
+                        <h3 style=" margin-top: 40px; }">Bạn có muốn xóa khóa học này không ?</h3>
+                        <div style=" margin-left: 100px;">
+                            
+                            
+
+                            @using (Html.BeginForm())
+                            {
+                                @Html.AntiForgeryToken()
+
+                            <div class="form-actions no-color" style="margin-top: 40px; margin-left: 40px;">
+                                <input type="submit" value="Xóa nó" class="btn btn-info" style=" margin-right: 30px;" />
+
+                                <a href="@Url.Action("Index", "Khoahocedm")" class="btn btn-primary" style="width: 100px; background-color: darkblue; border-color: cornsilk; " role="button">Không xóa</a>
+
+                                
+
+                            </div>
+                            }
+                        </div>
+
+
+
+
+
+
+
+
+
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+        <!-- /.row -->
+    </div><!-- /.container-fluid -->
+</div>
+
+
+
+
+
+
+
+
+
+

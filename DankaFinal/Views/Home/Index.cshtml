@@ -1,0 +1,152 @@
+﻿
+@using DankaFinal.Models;
+@model PagedList.PagedList<Khoahocedm>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Trang Chủ";
+}
+
+
+
+<div class="header_slide">
+    <div class="header_bottom_left">
+        <div class="categories">
+            <ul>
+                <h3 style="background: blueviolet; margin-top: 0px; ">Khóa học theo thể loại nhạc</h3>
+                <li>@Html.Action("SubjectTheloai", "Home")</li>
+
+            </ul>
+        </div>
+    </div>
+    <div class="header_bottom_right">
+        <div class="silder_der" style=" border-radius: 30px; height: 545px; border: 2px solid darkorchid; background-color: darkorchid">
+            <div class="slider">
+                <div id="slider" style=" border-radius: 30px; height: 540px; border: 2px solid darkorchid;">
+                    <div id="mover">
+                        <div id="slide-1" class="slide">
+                            <div class="slider-img" style=" width: 890px; margin-left: 98px;">
+                                <a href="preview.html"><img src="~/Content/imageDankamusic/quang cao 7.jpg" style="width: 100% ;border-radius: 50px;" alt="learn more" /></a>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+
+
+                    </div>
+                </div>
+                <!-- <div class="clear"></div>-->
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="clear"></div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="content">
+
+
+
+
+
+
+
+
+
+    <div class="content_tent">
+
+
+        <div class="heading">
+            <h3 style="margin-left:630px">Các khóa học mới</h3>
+        </div>
+
+        <div class="section group">
+
+            @Html.Action("SubjectKhoahoc", "Home")
+
+        </div>
+
+
+
+
+
+
+
+
+
+    </div>
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="content_tent">
+
+    <div class="heading">
+        <h3 style="margin-left:590px">Các khóa học bán chạy</h3>
+    </div>
+    <div class="section group">
+
+        @Html.Action("SubjectKhoahoc", "Home")
+
+    </div>
+
+
+
+
+
+
+</div>
+
+
+
+<style>
+
+    .content_toptop {
+        padding: 15px 20px;
+        border: 2px solid darkorchid;
+        border-radius: 15px;
+    }
+
+
+    .content_tent {
+        padding: 15px 20px;
+        border: 2px solid darkorchid;
+        border-radius: 9px;
+    }
+
+    .categories {
+        border: 2px solid darkorchid;
+        border-radius: 9px;
+    }
+</style>

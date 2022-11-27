@@ -1,0 +1,107 @@
+﻿@model DankaFinal.Models.Khoahocedm
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Khoahocedm</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.tenKhoahoc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tenKhoahoc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.donGia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.donGia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.moTa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.moTa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.hinhMinhhoa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.hinhMinhhoa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tengiangvien)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tengiangvien)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ngayCapnhat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ngayCapnhat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.soLuongban)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.soLuongban)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.soLanxem)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.soLanxem)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.linkdemo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.linkdemo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.lotrinh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.lotrinh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.theloai.tenTheloai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.theloai.tenTheloai)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.maKhoahoc }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
